@@ -1,0 +1,59 @@
+server:
+  port: ${PORT:8888}
+  servlet:
+    context-path: /pallet-login
+  forward-headers-strategy: framework
+  max-http-request-header-size: 10MB
+
+spring:
+  application:
+    name: pallet-login
+
+  threads:
+    virtual:
+      enabled: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pallet_login?currentSchema=pallet_login
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      allow-pool-suspension: true
+      connection-timeout: 30000
+      idle-timeout: 6000
+      max-lifetime: 1800
+      leak-detection-threshold: 20000
+      pool-name: PalletLoginHikariCP
+      maximum-pool-size: 5
+      minimum-idle: 2
+
+  jpa:
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+# Gemini AI Configuration (Gemini API Key + Model)
+gemini:
+  api-key: AIzaSyBfTKQXCLRqBB3xfH28_3yaZyPHTfqCdSg
+  model: gemini-1.5-flash-latest
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%t] [${spring.application.name:-}] - %msg%n"
