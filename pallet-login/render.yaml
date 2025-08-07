@@ -4,4 +4,5 @@ services:
     env: docker
     repo: https://github.com/Gamma636/pallet_login
     plan: free
+    rootDir: pallet-login
     dockerfilePath: Dockerfile
