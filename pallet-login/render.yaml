@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: pallet-login
+    env: docker
+    repo: https://github.com/Gamma636/pallet_login
+    plan: free
+    dockerfilePath: Dockerfile
